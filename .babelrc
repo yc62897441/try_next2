@@ -1,3 +1,9 @@
+// 根據 Next.js 的開發者在 issues#7322 中回應，這個問題是因為 Next.js 在 pre-rendering 階段 (SSR 或 SSG) 產生的 className 與 client-side 產生的 className 不一樣，導致 React 在 hydrate 時發現了這個問題，所以丟出了這個警告讓我們知道。
+
+// 首先，安裝 babel-plugin-styled-components 這個 babel 的 plugin：
+
+// 接著加入以下訊息
+
 {
     "presets": [
          "next/babel"
