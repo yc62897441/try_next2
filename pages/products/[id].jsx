@@ -2,13 +2,16 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
+import Loading from '../../components/Loading'
 
 const ProductWrapper = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     width: 90%;
+    min-height: 500px;
     margin: 0 auto 20px;
     padding: 5%;
     border-radius: 15px;
@@ -56,7 +59,7 @@ const ProductImgWrapper = styled.div`
 
 export default function Product() {
     const router = useRouter()
-    const [fetchData, setFetchData] = useState({})
+    const [fetchData, setFetchData] = useState(null)
     const id = router.query.id
 
     useEffect(() => {
@@ -79,27 +82,31 @@ export default function Product() {
         <Layout>
             <h1>This is the [ Product {id} ] Page.</h1>
             <h1>這個 Page 應該是使用 CSR 去 fetch 以下資料才進行 render</h1>
-            {fetchData && (
-                <ProductWrapper>
-                    {Object.keys(fetchData).map((key) => {
-                        if (key === 'images') {
-                            return (
-                                <ProductImgWrapper key={key}>
-                                    <img src={fetchData[key][0]} alt="product img" srcSet="" />
-                                </ProductImgWrapper>
-                            )
-                        } else if (key === 'thumbnail') {
-                            return ''
-                        } else {
-                            return (
-                                <ProductInfo key={key}>
-                                    <span>{key}:</span> {fetchData[key]}
-                                </ProductInfo>
-                            )
-                        }
-                    })}
-                </ProductWrapper>
-            )}
+            <ProductWrapper>
+                {fetchData ? (
+                    <>
+                        {Object.keys(fetchData).map((key) => {
+                            if (key === 'images') {
+                                return (
+                                    <ProductImgWrapper key={key}>
+                                        <img src={fetchData[key][0]} alt="product img" srcSet="" />
+                                    </ProductImgWrapper>
+                                )
+                            } else if (key === 'thumbnail') {
+                                return ''
+                            } else {
+                                return (
+                                    <ProductInfo key={key}>
+                                        <span>{key}:</span> {fetchData[key]}
+                                    </ProductInfo>
+                                )
+                            }
+                        })}
+                    </>
+                ) : (
+                    <Loading />
+                )}
+            </ProductWrapper>
         </Layout>
     )
 }
