@@ -80,8 +80,8 @@ export default function Product() {
 
     return (
         <Layout>
+            <h1>這個 Page 應該是使用 CSR 去 fetch 以下資料，再進行 render</h1>
             <h1>This is the [ Product {id} ] Page.</h1>
-            <h1>這個 Page 應該是使用 CSR 去 fetch 以下資料才進行 render</h1>
             <ProductWrapper>
                 {fetchData ? (
                     <>

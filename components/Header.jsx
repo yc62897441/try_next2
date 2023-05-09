@@ -40,7 +40,8 @@ export default function Header() {
             />
             <LinksWrapper>
                 <Link href={'/'}>首頁</Link>
-                <Link href={'/products'}>products</Link>
+                <Link href={'/products'}>products(CSR)</Link>
+                <Link href={'/products2'}>products2(SSG)</Link>
             </LinksWrapper>
         </HeaderWrapper>
     )

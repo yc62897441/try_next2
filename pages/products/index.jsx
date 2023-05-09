@@ -24,6 +24,7 @@ const ProductsListWrapper = styled.div`
 export default function Products() {
     return (
         <Layout>
+            <h1>以下項目的頁面中的資料，應該是使用 CSR 去 fetch 資料，再進行 render</h1>
             <h1>This is the [ Products ] Page.</h1>
             <ProductsListWrapper>
                 {Array.from({ length: 10 }, (_value, index) => {
