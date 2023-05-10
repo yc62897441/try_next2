@@ -41,7 +41,8 @@ export default function Header() {
             <LinksWrapper>
                 <Link href={'/'}>首頁</Link>
                 <Link href={'/products'}>products(CSR)</Link>
-                <Link href={'/products2'}>products2(SSG)</Link>
+                <Link href={'/products2'}>products2(SSG, getStaticProps + getStaticPaths)</Link>
+                <Link href={'/products3'}>products3(SSR, getServerSideProps)</Link>
                 <Link href={'/posts'}>Posts(SSG, getStaticProps + getStaticPaths)</Link>
             </LinksWrapper>
         </HeaderWrapper>
