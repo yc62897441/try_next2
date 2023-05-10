@@ -10,13 +10,13 @@ const HeaderWrapper = styled.header`
     border: 5px solid black;
 `
 
-const LinksWrapper = styled.div`
+export const LinksWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
 
     a {
-        margin: 0 5px;
+        margin: 0 10px;
         color: navy;
         font-size: 18px;
         font-weight: 600;
@@ -42,6 +42,7 @@ export default function Header() {
                 <Link href={'/'}>首頁</Link>
                 <Link href={'/products'}>products(CSR)</Link>
                 <Link href={'/products2'}>products2(SSG)</Link>
+                <Link href={'/posts'}>Posts(SSG, getStaticProps + getStaticPaths)</Link>
             </LinksWrapper>
         </HeaderWrapper>
     )
